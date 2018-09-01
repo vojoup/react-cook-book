@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Recipes from './recipe';
+import Recipes from './recipes';
 
 export default class Dashboard extends Component {
   render() {
     return (
-      <div className="dashboard">
+      <div>
         <ul>
           <Recipes />
         </ul>
