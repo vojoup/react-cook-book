@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Grid from 'react-css-grid';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ReactStars from 'react-stars';
 
 import { getAllRecipes } from '../actions/recipe-actions';
 
@@ -20,7 +19,6 @@ class Recipes extends Component {
         <Link to={`/recipe/${i}`} key={i}>
           <li className="recipe-item" style={style}>
             <h3>{recipe.name}</h3>
-            <ReactStars className="rating" value={recipe.rating} edit={false} />
           </li>
         </Link>
       );
