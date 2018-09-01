@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Grid from 'react-css-grid';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import ReactStars from 'react-stars';
 
-import Ingredients from './ingredients';
 import { getAllRecipes } from '../actions/recipe-actions';
 
 class Recipes extends Component {
@@ -15,13 +15,12 @@ class Recipes extends Component {
   renderRecipes() {
     const { recipes } = this.props;
     const recipesList = recipes.map((recipe, i) => {
-      const { ingredients } = recipe;
-
+      const style = { backgroundImage: `url(${recipe.pathToImage})` };
       return (
         <Link to={`/recipe/${i}`} key={i}>
-          <li className="recipe-item">
+          <li className="recipe-item" style={style}>
             <h3>{recipe.name}</h3>
-            <Ingredients ingredients={ingredients} />
+            <ReactStars className="rating" value={recipe.rating} edit={false} />
           </li>
         </Link>
       );

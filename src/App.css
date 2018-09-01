@@ -35,6 +35,10 @@
   text-decoration: none;
 }
 
+.rating {
+  display: inline-block;
+}
+
 a {
   color: #111;
   text-decoration: none;

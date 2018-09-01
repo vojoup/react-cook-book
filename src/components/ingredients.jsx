@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { PropTypes } from 'prop-types';
 import Ingredient from './ingredient';
 
 export default class Ingredients extends Component {
@@ -28,12 +27,3 @@ export default class Ingredients extends Component {
     );
   }
 }
-
-// Ingredients.prototype = {
-//   ingredients: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       name: PropTypes.string,
-//       amount: PropTypes.number,
-//     }).isRequired
-//   ),
-// };

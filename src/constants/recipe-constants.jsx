@@ -1,2 +1,3 @@
 export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID';
 export const GET_ALL_RECIPES = 'GET_ALL_RECIPES';
+export const SET_RATING_BY_ID = 'SET_RATING_BY_ID';
