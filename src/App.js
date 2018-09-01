@@ -4,14 +4,13 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/dashboard';
 import RecipeDetailPage from './components/recipe-detail-page';
+import Header from './components/header';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="header-text">Recipes Book</h1>
-        </header>
+        <Header />
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/dashboard" component={Dashboard} />

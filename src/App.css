@@ -8,7 +8,9 @@
   background-color: #E4C2C6;
   height: 90px;
   padding: 20px;
+  text-align: left;
   color: #111;
+  overflow: hidden;
 }
 
 .App-title {
@@ -39,6 +41,27 @@
   display: inline-block;
 }
 
+.back-button {
+  background-color: #FAE8EB;
+  border: .1rem solid rgba(250, 232, 235, 0.678);
+  border-radius: .4rem;
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 500;
+  padding: 0 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.back-button:hover {
+  background-color: rgb(189, 223, 179);
+}
+
+.right {
+  float: right;
+}
+
 a {
   color: #111;
   text-decoration: none;
@@ -57,7 +80,12 @@ ul {
   list-style: none;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@media screen and (max-width: 500px) {
+  .App-header {
+    text-align: center;
+  }
+  
+  .header-right {
+    float: inherit;
+  }
 }
