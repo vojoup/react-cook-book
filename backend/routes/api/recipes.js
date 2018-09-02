@@ -16,6 +16,14 @@ router.get('/', (req, res) => {
 });
 
 /**
+ * Get a single recipe by ID
+ * @route GET api/recipes
+ */
+router.get('/:id', (req, res) => {
+  RecipeSchema.findById(req.params.id).then(recipe => res.json(recipe));
+});
+
+/**
  * Add a new recipe
  * @route POST api/recipes
  */
@@ -48,7 +56,7 @@ router.patch('/:id', (req, res) => {
   RecipeSchema.findById(req.params.id)
     .then(recipe => {
       recipe.rating = req.body.newRating;
-      recipe.save().then(() => res.json({ success: true, message: 'Rating updated!' }));
+      recipe.save().then(updatedRecipe => res.json({ updatedRecipe, success: true, message: 'Rating updated!' }));
     })
     .catch(err => {
       res.status(400).json({ success: false, message: 'Item not found!' });

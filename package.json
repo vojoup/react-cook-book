@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cors": "^2.8.4",
@@ -18,7 +19,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-stars": "^2.2.5",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "concurrently -c red,blue -n UI,DB \"react-scripts start\" \"npm run start:backend\"",
@@ -37,5 +39,6 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "prettier": "1.14.2"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
