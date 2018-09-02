@@ -16,12 +16,22 @@ export const getAllRecipes = () => dispatch => {
 // return { type: GET_RECIPE_BY_ID, selectedRecipe };
 export const getRecipeByID = id => dispatch => {
   dispatch(setReciepsLoading());
-  axios.get();
+  axios.get(`http://localhost:3001/api/recipes/${id}`).then(recipe => {
+    dispatch({ type: GET_RECIPE_BY_ID, selectedRecipe: recipe.data });
+  });
 };
 
-export function setRatingById(id, newRating) {
-  const recipeToSetRating = allRecipes.recipes[id];
-  recipeToSetRating.rating = newRating;
+export const setRatingById = (id, newRating) => dispatch => {
+  axios
+    .patch(`http://localhost:3001/api/recipes/${id}`, {
+      newRating,
+    })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: SET_RATING_BY_ID, updatedRecipe: res });
+    });
+};
 
-  return { type: SET_RATING_BY_ID, recipes: [...allRecipes, recipeToSetRating] };
-}
+// export const deleteRecipeByID = id => dispatch => {
+//   axios.delete(`http://localhost:3001/api/recipes/${id}`).then(res => console.log(res));
+// };

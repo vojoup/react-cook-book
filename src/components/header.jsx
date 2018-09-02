@@ -11,7 +11,6 @@ class Header extends Component {
   goBack() {
     const { history } = this.props;
 
-    console.log('goback', history);
     history.goBack();
   }
 

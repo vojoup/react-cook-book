@@ -12,18 +12,20 @@ class RecipeDetail extends Component {
     this.handleRatingChange = this.handleRatingChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { getRecipeInfo, match } = this.props;
 
-    getRecipeInfo(+match.params.id);
+    getRecipeInfo(match.params.id);
   }
 
   handleRatingChange(newRating) {
     const { setNewRating, match } = this.props;
 
-    setNewRating(+match.params.id, newRating);
+    setNewRating(match.params.id, newRating);
+  }
 
-    console.log(this.props);
+  deleteRecipe() {
+    console.log('Delete recipe!!!!!');
   }
 
   render() {
@@ -40,6 +42,9 @@ class RecipeDetail extends Component {
               </span>
             </h2>
             <Ingredients ingredients={recipe.ingredients} />
+            <button type="button" onClick={this.deleteRecipe} title="Delete this recipe?">
+              Delete
+            </button>
           </div>
         )}
       </div>

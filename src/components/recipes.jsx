@@ -15,10 +15,11 @@ class Recipes extends Component {
 
   renderRecipes() {
     const { recipes } = this.props;
+
     const recipesList = recipes.map((recipe, i) => {
       const style = { backgroundImage: `url(${recipe.pathToImage})` };
       return (
-        <Link to={`/recipe/${i}`} key={i}>
+        <Link to={`/recipe/${recipe._id}`} key={i}>
           <li className="recipe-item" style={style}>
             <h3>{recipe.name}</h3>
           </li>

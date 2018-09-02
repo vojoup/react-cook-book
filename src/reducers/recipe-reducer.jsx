@@ -13,7 +13,7 @@ export default function recipesReducer(state = initialState, action) {
     case GET_RECIPE_BY_ID:
       return { ...state, selectedRecipe: action.selectedRecipe };
     case SET_RATING_BY_ID:
-      return { ...state, recipes: [...action.recipes] };
+      return { ...state, recipes: [...state.recipes, action.updatedRecipe] };
     case ITEMS_LOADING:
       return { ...state, loading: true };
     default:
