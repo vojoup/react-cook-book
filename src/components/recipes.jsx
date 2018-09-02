@@ -4,11 +4,25 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getAllRecipes } from '../actions/recipe-actions';
+import Spinner from './spinner';
 
 class Recipes extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false,
+    };
+  }
+
+  componentDidMount() {
     const { getRecipes } = this.props;
-    getRecipes();
+
+    this.setState({ loading: true });
+    setTimeout(() => {
+      getRecipes();
+      this.setState({ loading: false });
+    }, 2000);
   }
 
   renderRecipes() {
@@ -28,6 +42,10 @@ class Recipes extends Component {
   }
 
   render() {
+    const { loading } = this.state;
+    if (loading) {
+      return <Spinner />;
+    }
     return <Grid>{this.renderRecipes()}</Grid>;
   }
 }
