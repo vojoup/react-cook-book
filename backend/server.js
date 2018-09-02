@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const recipes = require('./routes/api/recipes');
 
@@ -11,7 +12,7 @@ require('dotenv').load();
 app.use(bodyParser.json(), cors());
 
 const PORT = process.env.DB_PORT || 3001;
-const MONGODB_URI = process.env.MONGODB_URI || 'nenacteno';
+const MONGODB_URI = process.env.MONGODB_URI || 'No URI provided!';
 
 console.log('URI: ', MONGODB_URI);
 
@@ -29,6 +30,13 @@ mongoose
 
 // * Use routes
 app.use('/api/recipes', recipes);
+
+// * Serve static assests if in prod mode
+if (process.env.NODE_ENV === 'production') {
+  // * Set static folder
+  app.use(express.static('../build'));
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'build', 'index.html')));
+}
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
