@@ -36,7 +36,12 @@ class RecipeDetail extends Component {
             <h2>
               {recipe.name}{' '}
               <span className="rating">
-                <ReactStars value={recipe.rating} onChange={this.handleRatingChange} />
+                <ReactStars
+                  value={recipe.rating}
+                  color1="#CD9FCC"
+                  color2="#0A014F"
+                  onChange={this.handleRatingChange}
+                />
               </span>
             </h2>
             <Ingredients ingredients={recipe.ingredients} />
