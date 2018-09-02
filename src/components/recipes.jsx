@@ -7,22 +7,10 @@ import { getAllRecipes } from '../actions/recipe-actions';
 import Spinner from './spinner';
 
 class Recipes extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: false,
-    };
-  }
-
   componentDidMount() {
     const { getRecipes } = this.props;
 
-    this.setState({ loading: true });
-    setTimeout(() => {
-      getRecipes();
-      this.setState({ loading: false });
-    }, 2000);
+    getRecipes();
   }
 
   renderRecipes() {
@@ -42,7 +30,7 @@ class Recipes extends Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading } = this.props;
     if (loading) {
       return <Spinner />;
     }
@@ -52,6 +40,7 @@ class Recipes extends Component {
 
 const mapStateToProps = state => ({
   recipes: state.recipes,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
