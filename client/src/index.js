@@ -23,15 +23,6 @@ const enhancer = composeEnhancers(
 );
 const store = createStore(recipesReducer, enhancer);
 
-
-
-// const store = createStore(
-//   recipesReducer,
-//   composeEnhancers(
-//     applyMiddleware(...middleware,)
-//   )
-// );
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
