@@ -18,12 +18,19 @@ const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
     }) : compose;
 
-const store = createStore(
-  recipesReducer,
-  composeEnhancers(
-    applyMiddleware(...middleware, window.devToolsExtension ? window.devToolsExtension() : f => f)
-  )
+const enhancer = composeEnhancers(
+  applyMiddleware(...middleware),
 );
+const store = createStore(recipesReducer, enhancer);
+
+
+
+// const store = createStore(
+//   recipesReducer,
+//   composeEnhancers(
+//     applyMiddleware(...middleware,)
+//   )
+// );
 
 ReactDOM.render(
   <Provider store={store}>
