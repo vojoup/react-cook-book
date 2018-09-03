@@ -21,7 +21,7 @@ const composeEnhancers =
 const store = createStore(
   recipesReducer,
   composeEnhancers(
-    applyMiddleware(...middleware)
+    applyMiddleware(...middleware, window.devToolsExtension ? window.devToolsExtension() : f => f)
   )
 );
 
