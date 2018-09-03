@@ -12,9 +12,11 @@ import recipesReducer from './reducers/recipe-reducer';
 
 const middleware = [thunk];
 
+const Compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   recipesReducer,
-  compose(
+  Compose(
     applyMiddleware(...middleware),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
