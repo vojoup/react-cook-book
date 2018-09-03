@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { addRecipe } from '../actions/recipe-actions';
+import { connect } from 'react-redux';
 
-export default class NewRecipe extends Component {
+class NewRecipe extends Component {
   constructor(props) {
     super(props);
 
@@ -18,8 +20,11 @@ export default class NewRecipe extends Component {
 
   saveRecipe() {
     const { inputValue } = this.state;
+    const { saveNewRecipe } = this.props;
+
     if (inputValue) {
       console.log("New recipe name: ", inputValue);
+      saveNewRecipe({ name: inputValue, ingredients: [] });
     } else {
       console.log("Empty new recipe name - cannot save");
     }
@@ -38,3 +43,8 @@ export default class NewRecipe extends Component {
   }
 }
 
+const mapDispathcToProps = (dispatch) => {
+  return { saveNewRecipe: (newRecipe) => dispatch(addRecipe(newRecipe)) };
+};
+
+export default connect(null, mapDispathcToProps)(NewRecipe);

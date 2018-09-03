@@ -1,4 +1,4 @@
-import { GET_ALL_RECIPES, GET_RECIPE_BY_ID, SET_RATING_BY_ID, ITEMS_LOADING } from '../constants/recipe-constants';
+import { GET_ALL_RECIPES, GET_RECIPE_BY_ID, SET_RATING_BY_ID, ITEMS_LOADING, ADD_NEW_RECIPE } from '../constants/recipe-constants';
 
 const initialState = {
   recipes: [],
@@ -14,6 +14,8 @@ export default function recipesReducer(state = initialState, action) {
       return { ...state, selectedRecipe: action.selectedRecipe };
     case SET_RATING_BY_ID:
       return { ...state, recipes: [...state.recipes, action.updatedRecipe] };
+    case ADD_NEW_RECIPE:
+      return { ...state };
     case ITEMS_LOADING:
       return { ...state, loading: true };
     default:
