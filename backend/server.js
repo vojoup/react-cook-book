@@ -11,7 +11,7 @@ require('dotenv').load();
 
 app.use(bodyParser.json(), cors());
 
-const PORT = process.env.DB_PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const MONGODB_URI = process.env.MONGODB_URI || 'No URI provided!';
 
 console.log('URI: ', MONGODB_URI);
