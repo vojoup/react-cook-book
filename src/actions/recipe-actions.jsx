@@ -8,7 +8,7 @@ export function setReciepsLoading() {
 export const getAllRecipes = () => dispatch => {
   dispatch(setReciepsLoading());
   axios
-    .get('http://localhost:3001/api/recipes')
+    .get('/api/recipes')
     .then(res => dispatch({ type: GET_ALL_RECIPES, recipes: res.data }))
     .catch(err => console.log(err));
 };
@@ -16,14 +16,14 @@ export const getAllRecipes = () => dispatch => {
 // return { type: GET_RECIPE_BY_ID, selectedRecipe };
 export const getRecipeByID = id => dispatch => {
   dispatch(setReciepsLoading());
-  axios.get(`http://localhost:3001/api/recipes/${id}`).then(recipe => {
+  axios.get(`/api/recipes/${id}`).then(recipe => {
     dispatch({ type: GET_RECIPE_BY_ID, selectedRecipe: recipe.data });
   });
 };
 
 export const setRatingById = (id, newRating) => dispatch => {
   axios
-    .patch(`http://localhost:3001/api/recipes/${id}`, {
+    .patch(`/api/recipes/${id}`, {
       newRating,
     })
     .then(res => {
@@ -33,5 +33,5 @@ export const setRatingById = (id, newRating) => dispatch => {
 };
 
 // export const deleteRecipeByID = id => dispatch => {
-//   axios.delete(`http://localhost:3001/api/recipes/${id}`).then(res => console.log(res));
+//   axios.delete(`/api/recipes/${id}`).then(res => console.log(res));
 // };
