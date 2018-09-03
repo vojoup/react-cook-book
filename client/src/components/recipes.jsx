@@ -27,6 +27,14 @@ class Recipes extends Component {
       );
     });
 
+    recipesList.push(
+      <Link to={`/newRecipe`} key={recipesList.length + 1}>
+        <li className="recipe-item new-recipe">
+          <h3>Add a new recipe</h3>
+        </li>
+      </Link>
+    );
+
     return recipesList;
   }
 

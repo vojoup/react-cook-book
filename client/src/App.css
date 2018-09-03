@@ -37,6 +37,11 @@
   text-decoration: none;
 }
 
+.new-recipe {
+  background-color: #0A014F;
+  color: #F6CACA;
+}
+
 .recipe-item:hover {
   background-color: rgb(189, 223, 179);
   color: #0A014F;
@@ -47,8 +52,7 @@
   display: inline-block;
 }
 
-.back-button {
-  background-color: #FAE8EB;
+.button {
   border: .1rem solid rgba(250, 232, 235, 0.678);
   border-radius: .4rem;
   cursor: pointer;
@@ -60,7 +64,11 @@
   transition: background-color 1s;
 }
 
-.back-button:hover {
+.back-button {
+  background-color: #FAE8EB;
+}
+
+.button:hover {
   background-color: rgb(189, 223, 179);
   color: #0A014F;
 }

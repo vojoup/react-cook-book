@@ -15,7 +15,7 @@ class Header extends Component {
   }
 
   renderBackButton() {
-    return window.location.pathname.includes('/recipe/');
+    return window.location.pathname.includes('/recipe/') || window.location.pathname.includes('/newRecipe');
   }
 
   render() {
@@ -24,7 +24,7 @@ class Header extends Component {
         <h1 className="header-text">Recipes Book</h1>
         {this.renderBackButton() && (
           <div className="right">
-            <button className="back-button round" type="button" onClick={this.goBack}>
+            <button className="button" type="button" onClick={this.goBack}>
               Go Back
             </button>
           </div>

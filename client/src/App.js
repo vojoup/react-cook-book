@@ -5,6 +5,7 @@ import './App.css';
 import Dashboard from './components/dashboard';
 import RecipeDetailPage from './components/recipe-detail-page';
 import Header from './components/header';
+import NewRecipe from './components/new-recipe';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/recipe" component={RecipeDetailPage} />
+          <Route path="/newRecipe" component={NewRecipe} />
         </Switch>
       </div>
     );
