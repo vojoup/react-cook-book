@@ -20,7 +20,7 @@ class Recipes extends Component {
       const style = { backgroundImage: `url(${recipe.pathToImage})` };
       return (
         <Link to={`/recipe/${recipe._id}`} key={i}>
-          <li className="recipe-item" style={style}>
+          <li className="recipe-item tile" style={style}>
             <h3>{recipe.name}</h3>
           </li>
         </Link>
