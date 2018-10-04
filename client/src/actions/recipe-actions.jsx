@@ -1,10 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import createHistory from 'history/createBrowserHistory'
 
 import { GET_ALL_RECIPES, GET_RECIPE_BY_ID, SET_RATING_BY_ID, ITEMS_LOADING, ADD_NEW_RECIPE } from '../constants/recipe-constants';
-
-const history = createHistory();
 
 export function setReciepsLoading() {
   return { type: ITEMS_LOADING };
@@ -45,6 +42,7 @@ export const addRecipe = (newRecipe) => dispatch => {
     .then(res => {
       console.log("Added a new recipe", newRecipe);
       dispatch({ type: ADD_NEW_RECIPE });
+      toast.success(`${newRecipe.name} added to Cook Book!`);
     })
     .catch(() => toast.error('There were some problems adding this recipe to the Cook Book'));
 }
@@ -53,7 +51,7 @@ export const deleteRecipeByID = id => dispatch => {
   axios
     .delete(`/api/recipes/${id}`)
     .then(res => {
-      console.log(res);
       toast.success('Recipe deleted!');
-    });
+    }).
+    catch(() => toast.error('Couldn\'t delete the recipe'));
 };

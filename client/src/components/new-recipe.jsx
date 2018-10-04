@@ -2,17 +2,23 @@ import React, { Component } from 'react'
 import { addRecipe } from '../actions/recipe-actions';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import ReactStars from 'react-stars';
+
+
+import '../css/new-recipe.css';
 
 class NewRecipe extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      inputValue: ''
+      inputValue: '',
+      rating: 0,
     };
 
     this.recipeNameChange = this.recipeNameChange.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
+    this.handleRatingChange = this.handleRatingChange.bind(this);
   }
 
   recipeNameChange(e) {
@@ -24,23 +30,41 @@ class NewRecipe extends Component {
     const { saveNewRecipe, history } = this.props;
 
     if (inputValue) {
-      console.log("New recipe name: ", inputValue);
-      await saveNewRecipe({ name: inputValue, ingredients: [] });
-      toast.success(`${inputValue} added to Cook Book!`);
+      const { rating } = this.state;
+
+      console.log("New recipe rating: ", rating);
+
+      await saveNewRecipe({ name: inputValue, ingredients: [], rating });
       history.push('/');
     } else {
-      console.log("Empty new recipe name - cannot save");
-      toast.warn('Empty new recipe name - cannot save');
+      toast.warn('Please enter a name for your recipe.');
     }
+  }
+
+  handleRatingChange(rating) {
+    this.setState({ rating });
+  }
+
+  ingredients() {
+
   }
 
   render() {
     return (
       <div>
-        <form action="action">
-          <label htmlFor="new-recipe-name">New recipe name</label>
-          <input type="text" name="new-recipe-name" onChange={this.recipeNameChange} />
-          <button type="button" className="button" onClick={this.saveRecipe}>Save!</button>
+        <form action="action" className="new-recipe-form">
+          {/* <label htmlFor="new-recipe-name">Name:</label> */}
+          <input placeholder="Recipe name" type="text" name="new-recipe-name" onChange={this.recipeNameChange} className="new-recipe-input" />
+          {this.ingredients()}
+          <span className="rating">
+            <ReactStars
+              value={0}
+              color1="#CD9FCC"
+              color2="#0A014F"
+              onChange={this.handleRatingChange}
+            />
+          </span>
+          <button type="button" className="button submit" onClick={this.saveRecipe}>Save!</button>
         </form>
       </div>
     )
