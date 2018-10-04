@@ -4,6 +4,7 @@ const initialState = {
   recipes: [],
   selectedRecipe: null,
   loading: false,
+  message: '',
 };
 
 export default function recipesReducer(state = initialState, action) {

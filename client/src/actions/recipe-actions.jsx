@@ -1,5 +1,10 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import createHistory from 'history/createBrowserHistory'
+
 import { GET_ALL_RECIPES, GET_RECIPE_BY_ID, SET_RATING_BY_ID, ITEMS_LOADING, ADD_NEW_RECIPE } from '../constants/recipe-constants';
+
+const history = createHistory();
 
 export function setReciepsLoading() {
   return { type: ITEMS_LOADING };
@@ -29,7 +34,9 @@ export const setRatingById = (id, newRating) => dispatch => {
     .then(res => {
       console.log(res);
       dispatch({ type: SET_RATING_BY_ID, updatedRecipe: res });
-    });
+      toast.success('Rating updated!');
+    })
+    .catch(() => toast.error('Something went wrong - please try again...'));
 };
 
 export const addRecipe = (newRecipe) => dispatch => {
@@ -39,8 +46,14 @@ export const addRecipe = (newRecipe) => dispatch => {
       console.log("Added a new recipe", newRecipe);
       dispatch({ type: ADD_NEW_RECIPE });
     })
+    .catch(() => toast.error('There were some problems adding this recipe to the Cook Book'));
 }
 
-// export const deleteRecipeByID = id => dispatch => {
-//   axios.delete(`/api/recipes/${id}`).then(res => console.log(res));
-// };
+export const deleteRecipeByID = id => dispatch => {
+  axios
+    .delete(`/api/recipes/${id}`)
+    .then(res => {
+      console.log(res);
+      toast.success('Recipe deleted!');
+    });
+};

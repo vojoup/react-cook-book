@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { addRecipe } from '../actions/recipe-actions';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 class NewRecipe extends Component {
   constructor(props) {
@@ -18,15 +19,18 @@ class NewRecipe extends Component {
     this.setState({ inputValue: e.target.value });
   }
 
-  saveRecipe() {
+  async saveRecipe() {
     const { inputValue } = this.state;
-    const { saveNewRecipe } = this.props;
+    const { saveNewRecipe, history } = this.props;
 
     if (inputValue) {
       console.log("New recipe name: ", inputValue);
-      saveNewRecipe({ name: inputValue, ingredients: [] });
+      await saveNewRecipe({ name: inputValue, ingredients: [] });
+      toast.success(`${inputValue} added to Cook Book!`);
+      history.push('/');
     } else {
       console.log("Empty new recipe name - cannot save");
+      toast.warn('Empty new recipe name - cannot save');
     }
   }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 class Header extends Component {
   constructor(props) {
@@ -29,6 +31,7 @@ class Header extends Component {
             </button>
           </div>
         )}
+        <ToastContainer />
       </header>
     );
   }
