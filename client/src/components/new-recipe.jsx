@@ -50,6 +50,8 @@ class NewRecipe extends Component {
   }
 
   render() {
+    const { rating } = this.state;
+
     return (
       <div>
         <form action="action" className="new-recipe-form">
@@ -58,7 +60,7 @@ class NewRecipe extends Component {
           {this.ingredients()}
           <span className="rating">
             <ReactStars
-              value={0}
+              value={rating}
               color1="#CD9FCC"
               color2="#0A014F"
               onChange={this.handleRatingChange}
