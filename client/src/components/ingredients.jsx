@@ -21,7 +21,7 @@ export default class Ingredients extends Component {
 
     return (
       <div>
-        <h4>Ingredietnts:</h4>
+        <h4>Ingredients:</h4>
         <ul>{this.renderIngredients(ingredients)}</ul>
       </div>
     );
